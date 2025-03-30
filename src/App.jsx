@@ -1,13 +1,16 @@
-import './App.css'
+import '@Styles/App.css'
 import { Suspense, lazy } from 'react'
-import reactLogo from './assets/react.svg'
+import { Outlet } from "react-router-dom"
+import reactLogo from '@Assets/react.svg'
 
 // Works also with SSR as expected
-const Card = lazy(() => import('./Card'))
+const Card = lazy(() => import('@App/Card'))
 
 function App() {
   return (
     <>
+      <Outlet /> {/* This will render the routed components */}
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -26,7 +29,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
 export default App

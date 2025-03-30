@@ -1,16 +1,19 @@
 import { StrictMode } from 'react'
 import { renderToPipeableStream } from 'react-dom/server'
-import App from './App'
+import { RouterProvider } from "react-router-dom";
+import { createRouter } from "./routes";
 
 /**
- * @param {string} _url
+ * @param {string} url
  * @param {import('react-dom/server').RenderToPipeableStreamOptions} [options]
  */
-export function render(_url, options) {
+export function render(url, options) {
+  const router = createRouter(url);
+
   return renderToPipeableStream(
     <StrictMode>
-      <App />
+      <RouterProvider router={router} />
     </StrictMode>,
-    options,
-  )
+    options
+  );
 }
